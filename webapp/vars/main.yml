@@ -1,0 +1,5 @@
+---
+# vars file for webapp
+webapp_version: 1v.b
+webapp_message: welcome to the server
+

@@ -1,0 +1,8 @@
+---
+# tasks file for webapp
+- name: deploy messages
+  copy:
+          content: "{{webapp_message}} ({{webapp_version}})"
+          dest: /etc/motd
+  when: "inventory_hostname in groups['lb_servers']"
+
