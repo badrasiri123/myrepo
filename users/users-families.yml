@@ -1,0 +1,17 @@
+---
+families:
+        - surname: smith
+          children:
+                  - name: mike
+                    age: 4
+                  - name: kate
+                    age: 23
+        - surname: sanders
+          children:
+                  - name: pete
+                    age: 12
+                  - name: sara
+                    age: 17
+
+        
+                                                                                                                      

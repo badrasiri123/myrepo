@@ -1,0 +1,23 @@
+---
+-
+ hosts: all
+ become: true
+ gather_facts: no
+ vars:
+         password: "{{lookup ('password'    'length=10')}}"
+ vars_files:
+         
+         - users/user_dict.yml
+ tasks:
+         - name: create users using dict items
+           mysql_user:
+                   name: "{{item.value.first}}"
+                   state: "{{state | default('present' , 'omit')}}"
+                   password: "{{password | password_hash('sha512')}}"
+                   priv: '*.*:ALL'
+                   update_password: always
+           loop: "{{users | dict2items}}"
+
+
+
+

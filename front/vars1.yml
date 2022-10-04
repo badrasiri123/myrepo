@@ -1,0 +1,23 @@
+users:
+        - name: logger
+          comment: "front logging user"
+          home: "{{front_home}}/audit"
+          password: pass
+        - name: broker
+          password: pass
+front_home: /opt/front
+folders:
+        - service
+        - files
+        - logs
+templates:
+        - webapp
+list_files_lists:
+        - username: bader
+          list_keys:
+                  - pubkey/johnd/passwords.txt
+                  - pubkey/johnd/password-01.txt
+
+
+
+

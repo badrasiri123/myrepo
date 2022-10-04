@@ -1,0 +1,14 @@
+---
+# tasks file for firewall
+- name: enable services
+  firewalld:
+          service: "{{item.service if ite.service is defined else omit}}"
+          port: "{{item.port if item.port is defined else omit}}"
+          permanent: yes
+          state: "{{item.state | default('enabled')}}"
+          immdediate: yes
+  notify:
+          - reload firewalld
+          - restart firewalld
+  become: true
+

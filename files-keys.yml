@@ -1,0 +1,28 @@
+---
+-
+ hosts: all
+ become: false
+ gather_facts: no
+ vars_files:
+         - group_vars/all/public_keys.yml
+ tasks:
+         - name: create dirs
+           file:
+                   path: "{{item}}"
+                   state: directory
+                   recurse: yes
+                   owner: root
+                   group: root
+           become: true
+           loop: "{{public_key_lists | map(attribute='public_keys') | flatten (levels=3)}}"
+         - name: deploy files
+           file:
+                   path: "{{item}}"
+                   owner: root
+                   group: root
+                   state: touch
+           loop: "{{public_key_lists | map(attribute='public_keys') | flatten}}"
+           become: true
+
+         
+

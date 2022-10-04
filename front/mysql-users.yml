@@ -1,0 +1,26 @@
+users_access:
+        - username: johnd
+          dept: IT
+          groups: telecom
+          role: manager
+          db_list:
+                  - employees
+                  - invenotory
+        - username: janed
+          dept: sales
+          groups: telecom
+          role: associate
+          db_list:
+                  - employees
+                  - inventory
+        - username: samar
+          dept: IT
+          groups: telecom
+          role: engineer
+          db_list:
+                  - employees
+                  - inventory
+
+                    
+
+

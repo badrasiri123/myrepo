@@ -1,0 +1,19 @@
+---
+# tasks file for apache
+- name: install apache webserver
+  block:
+          - yum:
+                  name: "{{packages}}"
+                  state: "{{state | default('present' , 'omit')}}"
+  when: "inventory_hostname in groups['lb_servers']"
+- name: enable and start httpd
+  block:
+          - service:
+                  name: httpd
+                  state: "{{state | default('started' , 'omit')}}"
+                  enabled: yes
+  when: "inventory_hostname in groups['lb_servers']"
+...
+
+
+          

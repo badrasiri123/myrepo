@@ -1,0 +1,15 @@
+---
+-
+ hosts: all
+ become: true
+ gather_facts: yes
+ serial:
+         - 1
+         - 100%
+ max_fail_percentage: 0
+ roles:
+         - webapp
+         - firewall
+         - haproxy
+         - apache
+

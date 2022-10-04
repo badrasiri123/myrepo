@@ -1,0 +1,19 @@
+backend_packages:
+        - maven
+        - tar
+        - vsftpd
+back_home: /tmp/back
+folders:
+        - service.j2
+        - files.j2
+        - logs.2
+users:
+        - username: logger
+          comment: "back logging user"
+          home: "{{back_home}}/audit"
+          uid: 2529
+          password: pass
+        - username: processor
+          password: pass
+
+

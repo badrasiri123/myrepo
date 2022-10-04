@@ -1,0 +1,19 @@
+---
+# tasks file for firewall
+- name: enable and start firewall
+  service:
+          name: firewalld
+          state: started
+          enabled: yes
+- name: enable the http port
+  firewalld:
+          port: "{{port_httpd}}/{{protocol}}"
+          permanent: yes
+          state: enabled
+  notify:
+          - restart httpd
+
+
+
+
+

@@ -1,0 +1,6 @@
+---
+# vars file for apache
+packages: httpd
+apache_dir_root: /var/www/html
+apache_file_root: apache.html
+

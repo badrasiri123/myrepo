@@ -1,0 +1,9 @@
+---
+-
+ hosts: localhost
+ gather_facts: no
+ tasks:
+         - name: display language
+           debug:
+                   msg: "{{lookup ('env' , 'LANG' , errors=warn) | default('english')}}"
+

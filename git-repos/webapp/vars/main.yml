@@ -1,0 +1,7 @@
+---
+# vars file for webapp
+webapp_root_dir: /var/www/html
+webapp_root_file: webapp.html
+webapp_version: 1v.b
+
+

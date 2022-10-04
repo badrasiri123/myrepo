@@ -1,0 +1,48 @@
+---
+-
+ hosts: all
+ become: false
+ ignore_errors: yes
+ gather_facts: yes
+ vars:
+         test_version: 1v.b4
+         Iac_version: 1v.b5
+         
+ tasks:
+         - name: deploy a file as where iam first 
+           file:
+                   path: './files'
+                   state: directory
+           become: true
+         - name: create a file inside ./files
+           file:
+                   path: './files/new-file'
+                   state: touch
+           become: true
+         - name: create content
+           lineinfile:
+                   line: "{{test_version}}"
+                   regexp: '^ansible_version:'
+                   state: present
+                   path: /home/bader/street/infos.j2
+         - name: iac version
+           lineinfile:
+                   line: "Iac_version:{{Iac_version}}"
+                   state: present
+                   regexp: '^Iac_version:'
+                   path: /home/bader/street/infos.j2
+           become: true
+         - name: date
+           lineinfile:
+                   state: present
+                   path: /home/bader/street/infos.j2
+                   line: "date:{{lookup ('pipe' , 'date')}}"
+                   regexp: '^date:'
+           become: true
+
+                   
+
+           
+
+
+

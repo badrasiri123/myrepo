@@ -1,0 +1,15 @@
+---
+-
+ hosts: all
+ become: false
+ gather_facts: no
+ vars:
+         html:
+                 name: locations
+ tasks:
+         - name: deploy template
+           template:
+                   src: /home/bader/street/locations.j2
+                   dest: "/var/www/{{item.name}}.html"
+           loop: "{{ lookup ('file' , 'locations.yml')  | from_yaml}}"
+

@@ -1,0 +1,5 @@
+---
+# defaults file for apache
+apache_optinal_packages: []
+apache_enablerepos_list: []
+

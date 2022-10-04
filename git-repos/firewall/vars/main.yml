@@ -1,0 +1,4 @@
+---
+# vars file for firewall
+port_httpd: 8080
+protocol: tcp

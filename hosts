@@ -1,0 +1,17 @@
+[lb_servers]
+localhost
+10.0.2.15
+
+[lb_servers:vars]
+httpd_port=8080
+ftp_port=77
+ansible_user_id=bader
+
+[webserver]
+192.168.122.1
+[webserver:children]
+lb_servers
+
+[development]
+127.0.0.1
+

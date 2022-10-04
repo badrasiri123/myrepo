@@ -1,0 +1,32 @@
+---
+-
+ hosts: all
+ become: true
+ gather_facts: no
+ vars:
+         local_group_info:
+                 - name: developers
+                   which_users:
+                           - mike
+                           - george
+                   which_groups:
+                           - adm
+                           - www-data
+ tasks:
+         - name: create user
+           user:
+                   name: "{{item.0.name}}"
+                   password: "{{item.0.name | password_hash('sha512')}}"
+                   state: present
+           loop: "{{local_group_info | subelements('which_users')}}"
+         - name: create groups
+           group:
+                   name: "{{item.0.name}}"
+                   state: present
+           loop: "{{local_group_info | subelements('which_groups')}}"
+
+
+
+   
+
+

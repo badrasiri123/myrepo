@@ -1,0 +1,35 @@
+---
+-
+ hosts: all
+ become: false
+ ignore_errors: yes
+ gather_facts: yes
+ vars:
+         Iac_version: 3.b.1
+ tasks:
+         - name: create content in template.j2
+           lineinfile:
+                   path: '/home/bader/street/git-repos/template.j2'
+                   regexp: '^Iac_'
+                   line: "Iac_version:{{Iac_version}}"
+                   state: present
+         - name: ansible_version
+           lineinfile:
+                   path: '/home/bader/street/git-repos/template.j2'
+                   regexp: 'ansible_version:'
+                   line: "ansible_version:{{lookup ('pipe' , 'ansible --version')}}"
+                   state: present
+         - name: processor
+           lineinfile:
+                   path: '/home/bader/street/git-repos/template.j2'
+                   regexp: 'processor'
+                   line: "processor:{{ansible_facts['processor_cores']}}"
+                   state: present
+
+         - name: fill up the template.j2
+           template:
+                   src: template.j2
+                   dest: /var/www/html/webapp.html
+           become: true
+
+

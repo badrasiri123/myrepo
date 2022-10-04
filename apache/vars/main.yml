@@ -1,0 +1,12 @@
+---
+# vars file for apache
+apache_base_packages:
+        - httpd
+        - maven
+        - gcc
+apache_optional_packages:
+        - tar
+        - vsftpd
+apache_enablerepos_list: []
+
+

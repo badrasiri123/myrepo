@@ -31,7 +31,7 @@
          - name:  create users as required
            user:
                    name: "{{item.key}}"
-                   password: "{{'password' | b64encode | password_hash('sha512')}}"
+                   password: "{{lookup ('password' , 'crednetials/' + item.key + ' length=10') | b64encode | password_hash('sha512')}}"
                    home: "{{back_home}}"
            loop: "{{users | dict2items}}"
            become: true

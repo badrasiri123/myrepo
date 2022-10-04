@@ -1,0 +1,10 @@
+---
+# vars file for firewall
+firewall:
+          port: 8080/tcp
+          zone: public
+          service: http
+          state: enabled
+
+
+         

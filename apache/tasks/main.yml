@@ -1,0 +1,19 @@
+---
+# tasks file for apache
+- name: set some facts
+  set_fact:
+          apache_package_list: "{{apache_base_packages}}"
+- name: install packages
+  yum:
+          name: "{{apache_package_list}}"
+          state: present
+- name: install packages and use union filter 
+  yum:
+          name: "{{apache_base_packages | union (apache_optional_packages)}}"
+          state: present
+
+...
+
+
+
+

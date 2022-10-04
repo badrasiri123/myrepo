@@ -1,0 +1,19 @@
+---
+# tasks file for haproxy
+- name: install haproxy
+  block:
+          - yum:
+                  name: haproxy
+                  state: present
+- name: enable and start haproxy
+  block:
+          - service:
+                  name: haproxy
+                  state: started
+                  enabled: yes
+
+
+      
+...
+
+

@@ -1,0 +1,17 @@
+---
+-
+ hosts: all
+ become: true
+ gather_facts: no
+ tasks:
+         
+         - name: locations.html.j2
+           template: 
+           src: locations.html.j2
+           dest:  "/var/www/html/{{item.name}}"
+ loop: "{{lookup ('file' , 'locations.yml') | from_yaml}}"
+
+
+
+
+
