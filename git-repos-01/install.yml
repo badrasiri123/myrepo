@@ -1,0 +1,17 @@
+---
+-
+ hosts: all
+ become: false
+ gather_facts: no
+ vars:
+         apache_packages:
+                 - httpd
+                 - git
+
+ tasks:
+         - name: install apache
+           yum:
+                   name: "{{apache_packages}}"
+                   state: present
+           become: true
+
