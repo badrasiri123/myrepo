@@ -10,7 +10,7 @@
 
  tasks:
          - name: install apache
-           yum:
+           dnf:
                    name: "{{apache_packages}}"
                    state: present
 
